@@ -1,0 +1,35 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+//Gradiente de fondo:
+$grad-morado-claro: rgb(192, 132, 252);
+$grad-rosa: rgb(236, 72, 153);
+$grad-rojo: rgb(239, 68, 68);
+
+// Colores de Fondo
+$bg-blanco: rgb(255, 255, 255);
+$bg-gris-claro-inact: rgb(243, 244, 246);
+$bg-girs-claro-boton-pag:  rgb(229, 231, 235);
+
+//Colores de Texto
+$texto-negro: rgb(31, 41, 55);
+$texto-gris-medio: rgb(75, 85, 99);
+$texto-gris-claro: rgb(107, 114, 128);
+$texto-blanco:  rgb(255, 255, 255);
+
+// Colores de Acento y Botones
+$boton-morado:  rgb(168, 85, 247);
+$boton-morado-hover: rgb(147, 51, 234);
+$boton-rosa: rgb(236, 72, 153);
+$boton-rosa-hover: rgb(219, 39, 119);
+$boton-rojo-texto: rgb(239, 68, 68);
+$boton-rojo-texto-hover: rgb(220, 38, 38);
+$boton-rojo-hover: rgb(254, 242, 242);
+
+//Colores de Bordes y Focus
+$border-gris: rgb(229, 231, 235);
+$borde-focus-morado: rgb(233, 213, 255);
+$borde-focus-rosa: rgb(251, 207, 232);
