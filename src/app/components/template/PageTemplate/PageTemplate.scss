@@ -1,0 +1,8 @@
+@import '/src/app/globals.scss';
+
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background: $grad-background;
+    padding: 30px 0;
+}

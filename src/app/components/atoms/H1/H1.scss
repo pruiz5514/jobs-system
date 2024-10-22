@@ -1,0 +1,8 @@
+@import '/src/app/globals.scss';
+
+.h1{
+    text-align: center;
+    color: $texto-negro;
+    font-size: $tamano-fuente-h1;
+    font-weight: bold;
+}

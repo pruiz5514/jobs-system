@@ -1,7 +1,8 @@
+import './H1.scss';
+
 interface H1Props {
     children: React.ReactNode;
 }
-
 
 const H1: React.FC<H1Props> = ({children}) => {
   return (

@@ -1,0 +1,10 @@
+@import '/src/app/globals.scss';
+
+.panel_container-section{
+    width: 90%;
+    min-height: calc(100vh - 60px);
+    margin: 0 auto;
+    background-color: $bg-blanco;
+    border-radius: $border-radius-container;
+    padding: 40px 30px;
+}

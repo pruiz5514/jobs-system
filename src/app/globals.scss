@@ -1,13 +1,14 @@
 *{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-//Gradiente de fondo:
+//Gradiente de fondo
 $grad-morado-claro: rgb(192, 132, 252);
 $grad-rosa: rgb(236, 72, 153);
 $grad-rojo: rgb(239, 68, 68);
+$grad-background: linear-gradient(115deg, rgba(192,132,252,1) 0%, rgba(236,72,153,1) 50%, rgba(239,68,68,1) 100%);
 
 // Colores de Fondo
 $bg-blanco: rgb(255, 255, 255);
@@ -33,3 +34,10 @@ $boton-rojo-hover: rgb(254, 242, 242);
 $border-gris: rgb(229, 231, 235);
 $borde-focus-morado: rgb(233, 213, 255);
 $borde-focus-rosa: rgb(251, 207, 232);
+
+//Border radius
+$border-radius-container: 12px;
+$border-radius-button: 20px;
+
+//Tamaño de texto
+$tamano-fuente-h1: 40px
