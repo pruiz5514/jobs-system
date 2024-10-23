@@ -1,4 +1,3 @@
-import Card from '../Card/Card'
 import './CardsContainer.scss'
 
 interface CardsContainerProps {

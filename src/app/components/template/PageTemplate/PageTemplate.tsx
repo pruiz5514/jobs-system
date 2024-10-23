@@ -7,10 +7,10 @@ import Card from '../../organisms/Card/Card'
 import PaginationContainer from '../../molecules/PaginationContainer/PaginationContainer'
 
 interface PageTemplateProps{
-    h1: string
+    h1?: string
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({h1}) => {
+const PageTemplate: React.FC<PageTemplateProps> = () => {
   return (
     <main className='main'>
         <PanelContainer>

@@ -12,10 +12,9 @@ interface OptionsButtonsProps {
 }  
 
 const OptionsButtons:React.FC<OptionsButtonsProps>= () => {
-  const [selected, setSelected] = useState(true)
   return (
     <div className="options_buttons-container">
-      <Button className={selected ? 'button-vacante' : ''} > <PiSuitcase /> Vacantes</Button>
+      <Button className='button-vacante' > <PiSuitcase /> Vacantes</Button>
       <Button > <BiBuildings /> Compañías</Button>
     </div>
   )
