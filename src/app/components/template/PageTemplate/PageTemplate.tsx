@@ -1,11 +1,10 @@
 import './PageTemplate.scss'
 
 import { PanelContainer } from '../../atoms/PanelContainer/PanelContainer'
-
-
-import ViewSection from '../../organisms/ViewSection/ViewSection'
 import CardsContainer from '../../organisms/CardsContainer/CardsContainer'
 import { Header } from '../../organisms/Header/Header'
+import Card from '../../organisms/Card/Card'
+import PaginationContainer from '../../molecules/PaginationContainer/PaginationContainer'
 
 interface PageTemplateProps{
     h1: string
@@ -16,9 +15,17 @@ const PageTemplate: React.FC<PageTemplateProps> = ({h1}) => {
     <main className='main'>
         <PanelContainer>
             <Header/>
-            <CardsContainer/>
-            
-            
+            <CardsContainer>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+            </CardsContainer>
+            <PaginationContainer/>
+
+
         </PanelContainer>
     </main>
   )

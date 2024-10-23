@@ -18,3 +18,13 @@
     background-color: $boton-morado;
     color: $texto-blanco;
 }
+
+.button-vacante:hover{
+    background-color: $boton-morado-hover;
+}
+
+.button-pagination{
+    padding: 0 10px;
+    border-radius: 15px;
+    background-color: $bg-girs-claro-boton-pag;
+}

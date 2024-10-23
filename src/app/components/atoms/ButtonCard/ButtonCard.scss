@@ -7,8 +7,27 @@
     border: 1px solid $borde-gris;
     background-color: $bg-blanco;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .button-pencil{
     color: $boton-morado;
+}
+
+.button-pencil:hover{
+    background-color: $boton-morado-hover;
+    color: $texto-blanco;
+}
+
+
+.button-bin{
+    color: $boton-rojo-texto
+}
+
+.button-bin:hover{
+    color: $boton-rojo-texto-hover;
+    background-color: $boton-rojo-hover;
 }

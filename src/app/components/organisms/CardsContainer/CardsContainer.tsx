@@ -1,10 +1,14 @@
 import Card from '../Card/Card'
 import './CardsContainer.scss'
 
-const CardsContainer = () => {
+interface CardsContainerProps {
+  children: React.ReactNode;
+}
+
+const CardsContainer: React.FC<CardsContainerProps> = ({children}) => {
   return (
     <div className='cards-container'>
-        <Card/>
+        {children}
     </div>
   )
 }

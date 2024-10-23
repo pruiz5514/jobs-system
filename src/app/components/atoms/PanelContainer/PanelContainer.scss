@@ -7,4 +7,7 @@
     background-color: $bg-blanco;
     border-radius: $border-radius-container;
     padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }

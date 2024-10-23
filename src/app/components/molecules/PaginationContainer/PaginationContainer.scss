@@ -1,0 +1,8 @@
+@import '/src/app/globals.scss';
+
+.pagination-container{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

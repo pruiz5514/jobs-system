@@ -2,8 +2,8 @@ import './Card.scss'
 import H3 from '../../atoms/H3/H3'
 import P from '../../atoms/P/P'
 import TextContainer from '../../molecules/TextContainer/TextContainer'
-import ButtonCard from '../../atoms/ButtonCard/ButtonCard'
-import { GoPencil } from 'react-icons/go'
+import CardsButtonContainer from '../../molecules/CardButtonsContainer/CardsButtonContainer'
+
 
 const Card = () => {
   return (
@@ -16,8 +16,10 @@ const Card = () => {
           <P>Compañia: TechCorp</P>
         </TextContainer>
 
-        <ButtonCard className='button-pencil'><GoPencil /></ButtonCard>
-        <ButtonCard className='button-pencil'><GoPencil /></ButtonCard>
+        <div className='card_buttons-div'>
+          <CardsButtonContainer/>
+        </div>
+        
         
     </article>
   )
