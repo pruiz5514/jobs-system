@@ -1,4 +1,4 @@
-import React from 'react'
+import './NavBar.scss'
 
 interface NavBarProps {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ interface NavBarProps {
 
 const NavBar:React.FC<NavBarProps> = ({children}) => {
   return (
-    <nav>{children}</nav>
+    <nav className='nav'>{children}</nav>
   )
 }
 

@@ -1,9 +1,12 @@
 @import '/src/app/globals.scss';
 
 .button{
+    height: $boton-altura;
     display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
-    padding: 8px 20px;
+    padding: 0 20px;
     border-radius: $border-radius-button;
     cursor: pointer;
     gap: 5px;

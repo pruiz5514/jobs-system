@@ -1,0 +1,12 @@
+@import '/src/app/globals.scss';
+
+.search_input-container{
+    width: 230px;
+    height: $boton-altura;
+    display: flex;
+    align-items: center;
+    border: 1px solid $borde-gris;
+    gap: 5px;
+    padding-left: 10px;
+    border-radius: $border-radius-input;
+}

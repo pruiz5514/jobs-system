@@ -5,6 +5,8 @@ import Button from '../../atoms/Button/Button'
 import { IoBagRemoveOutline } from 'react-icons/io5'
 import NavBar from '../../organisms/NavBar/NavBar'
 import OptionsButtons from '../../molecules/OptionsButtons/OptionsButtons'
+import { BiBuildings } from 'react-icons/bi'
+import SearchInput from '../../molecules/SearchInput/SearchInput'
 
 const PageTemplate = () => {
   return (
@@ -15,8 +17,9 @@ const PageTemplate = () => {
             <NavBar>
                 <OptionsButtons>
                     <Button> <IoBagRemoveOutline /> Vacantes</Button>
-                    <Button> <IoBagRemoveOutline /> Vacantes</Button>
+                    <Button> <BiBuildings /> Compañías</Button>
                 </OptionsButtons>
+                <SearchInput/>
             </NavBar>
 
             
