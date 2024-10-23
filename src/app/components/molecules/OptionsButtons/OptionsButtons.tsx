@@ -3,11 +3,10 @@
 import Button from '../../atoms/Button/Button';
 import './OptionsButtons.scss';
 import { BiBuildings } from 'react-icons/bi';
-import { useState } from 'react';
 import { PiSuitcase } from 'react-icons/pi';
 
 interface OptionsButtonsProps {
-    //children: React.ReactNode;
+    children?: React.ReactNode;
 
 }  
 
