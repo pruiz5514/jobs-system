@@ -1,12 +1,18 @@
 import './NavBar.scss'
 
-interface NavBarProps {
-  children: React.ReactNode;
-}  
+import OptionsButtons from '../../molecules/OptionsButtons/OptionsButtons'
+import SearchInput from '../../molecules/SearchInput/SearchInput'
 
-const NavBar:React.FC<NavBarProps> = ({children}) => {
+// interface NavBarProps {
+//   children: React.ReactNode;
+// }  
+
+const NavBar = () => {
   return (
-    <nav className='nav'>{children}</nav>
+    <nav className='nav'>
+      <OptionsButtons/>
+      <SearchInput/>
+    </nav>
   )
 }
 

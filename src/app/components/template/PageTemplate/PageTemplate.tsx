@@ -1,27 +1,23 @@
 import './PageTemplate.scss'
-import H1 from '../../atoms/H1/H1'
-import { PanelContainer } from '../../atoms/PanelContainer/PanelContainer'
-import Button from '../../atoms/Button/Button'
-import { IoBagRemoveOutline } from 'react-icons/io5'
-import NavBar from '../../organisms/NavBar/NavBar'
-import OptionsButtons from '../../molecules/OptionsButtons/OptionsButtons'
-import { BiBuildings } from 'react-icons/bi'
-import SearchInput from '../../molecules/SearchInput/SearchInput'
 
-const PageTemplate = () => {
+import { PanelContainer } from '../../atoms/PanelContainer/PanelContainer'
+
+
+import ViewSection from '../../organisms/ViewSection/ViewSection'
+import CardsContainer from '../../organisms/CardsContainer/CardsContainer'
+import { Header } from '../../organisms/Header/Header'
+
+interface PageTemplateProps{
+    h1: string
+}
+
+const PageTemplate: React.FC<PageTemplateProps> = ({h1}) => {
   return (
     <main className='main'>
         <PanelContainer>
-            <H1>Panel de administración</H1>
-
-            <NavBar>
-                <OptionsButtons>
-                    <Button> <IoBagRemoveOutline /> Vacantes</Button>
-                    <Button> <BiBuildings /> Compañías</Button>
-                </OptionsButtons>
-                <SearchInput/>
-            </NavBar>
-
+            <Header/>
+            <CardsContainer/>
+            
             
         </PanelContainer>
     </main>

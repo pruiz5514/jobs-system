@@ -1,0 +1,8 @@
+@import '/src/app/globals.scss';
+
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

@@ -1,0 +1,14 @@
+@import '/src/app/globals.scss';
+
+.button-container{
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid $borde-gris;
+    background-color: $bg-blanco;
+    font-size: 16px;
+}
+
+.button-pencil{
+    color: $boton-morado;
+}

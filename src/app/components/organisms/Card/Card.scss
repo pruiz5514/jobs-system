@@ -1,0 +1,12 @@
+@import '/src/app/globals.scss';
+
+.card-container{
+    width: 500px;
+    height: 250px;
+    border-radius: $border-radius-container;
+    box-shadow: $box-shadow;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

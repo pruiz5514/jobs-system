@@ -1,13 +1,24 @@
+'use client';
+
+import Button from '../../atoms/Button/Button';
 import './OptionsButtons.scss';
+import { BiBuildings } from 'react-icons/bi';
+import { useState } from 'react';
+import { PiSuitcase } from 'react-icons/pi';
 
 interface OptionsButtonsProps {
-    children: React.ReactNode;
+    //children: React.ReactNode;
+
 }  
 
-const OptionsButtons:React.FC<OptionsButtonsProps>= ({children}) => {
+const OptionsButtons:React.FC<OptionsButtonsProps>= () => {
+  const [selected, setSelected] = useState(true)
   return (
-    <div className="options_buttons-container">{children}</div>
+    <div className="options_buttons-container">
+      <Button className={selected ? 'button-vacante' : ''} > <PiSuitcase /> Vacantes</Button>
+      <Button > <BiBuildings /> Compañías</Button>
+    </div>
   )
 }
 
-export default OptionsButtons
+export default OptionsButtons 
