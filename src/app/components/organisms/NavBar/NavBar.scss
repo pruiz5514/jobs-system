@@ -3,5 +3,16 @@
 .nav{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 25px;
+    
+}
+
+@media (min-width: 650px){
+    .nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
 }

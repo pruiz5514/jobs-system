@@ -24,8 +24,6 @@ const PageTemplate: React.FC<PageTemplateProps> = () => {
                 <Card/>
             </CardsContainer>
             <PaginationContainer/>
-
-
         </PanelContainer>
     </main>
   )

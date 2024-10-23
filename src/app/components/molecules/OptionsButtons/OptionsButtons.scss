@@ -2,6 +2,7 @@
 
 .options_buttons-container{
     display: inline-flex;
+    max-width: 250px;
     background-color: $bg-gris-claro-inact;
     border-radius: $border-radius-button;
 }

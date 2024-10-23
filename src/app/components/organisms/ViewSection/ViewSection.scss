@@ -3,5 +3,15 @@
 .view_section-container{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 25px;
+}
+
+@media (min-width: 500px){
+    .view_section-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
 }
