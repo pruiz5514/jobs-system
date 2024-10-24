@@ -1,0 +1,11 @@
+@import '/src/app/globals.scss';
+
+.select{
+    width: 100%;
+    height: $input-form-hight;
+    padding: $input-form-padding;
+    border-radius: $input-form-border-radius;
+    border: $input-form-border;
+    font-size: $input-form-font-size;
+    color: $input-form-color;
+}

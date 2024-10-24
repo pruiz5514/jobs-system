@@ -1,0 +1,8 @@
+@import '/src/app/globals.scss';
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

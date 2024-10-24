@@ -3,11 +3,12 @@ import './Button.scss'
 interface ButtonProps {
     children: React.ReactNode;
     className?: string;
+    onClick?: ()=> void;
   }  
 
-const Button: React.FC<ButtonProps>  = ({children, className}) => {
+const Button: React.FC<ButtonProps>  = ({children, className, onClick}) => {
   return (
-    <button className={`button ${className}`}>
+    <button onClick={onClick} className={`button ${className}`}>
         {children}
     </button>
   )

@@ -1,0 +1,19 @@
+@import '/src/app/globals.scss';
+
+.inputForm{
+    width: 100%;
+    height: $input-form-hight;
+    padding: $input-form-padding;
+    border-radius: $input-form-border-radius;
+    border: $input-form-border;
+    font-size: $input-form-font-size;
+    color: $input-form-color;
+    
+}
+
+.inputForm:focus{
+    border: 1px solid $borde-focus-morado;
+    outline: $input-form-border-outline;
+    outline-offset: 2px;
+    
+}

@@ -19,20 +19,41 @@
 .button-vacante{
     background-color: $boton-morado;
     color: $texto-blanco;
+    
+    &:hover{
+        background-color: $boton-morado-hover;
+    }
 }
 
-.button-vacante:hover{
-    background-color: $boton-morado-hover;
+.button-vacante-modal{
+    background-color: $boton-morado;
+    color: $texto-blanco;
+    border-radius: $button-form-border-radius;
+
+    &:hover{
+        background-color: $boton-morado-hover;
+    }
 }
 
 .button-comp{
     background-color: $boton-rosa;
     color: $texto-blanco;
+
+    &:hover{
+        background-color: $boton-rosa-hover;
+    }
 }
 
-.button-comp:hover{
-    background-color: $boton-rosa-hover;
+.button-comp-modal{
+    background-color: $boton-rosa;
+    color: $texto-blanco;
+    border-radius: $button-form-border-radius;
+
+    &:hover{
+        background-color: $boton-rosa-hover;
+    }
 }
+
 
 .button-pagination{
     padding: 0 10px;
