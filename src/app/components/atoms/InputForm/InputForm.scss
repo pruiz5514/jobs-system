@@ -11,9 +11,14 @@
     
 }
 
-.inputForm:focus{
+.inputForm-vacancy:focus{
     border: 1px solid $borde-focus-morado;
     outline: $input-form-border-outline;
     outline-offset: 2px;
-    
+}
+
+.inputForm-company:focus{
+    border: 1px solid $borde-focus-rosa;
+    outline: $input-form-border-outline;
+    outline-offset: 2px;
 }

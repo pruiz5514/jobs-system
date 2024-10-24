@@ -9,10 +9,10 @@ import ModalFormVacancy from '../../organisms/ModalFormVacancy/ModalFormVacancy'
 import ModalFormCompany from '../../organisms/ModalFormCompany/ModalFormCompany';
 
 interface CardsButtonContainer{
-  type: string
+  page: string
 }
 
-const CardsButtonContainer:React.FC<CardsButtonContainer> = ({type}) => {
+const CardsButtonContainer:React.FC<CardsButtonContainer> = ({page}) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = ()=>{
@@ -26,11 +26,11 @@ const CardsButtonContainer:React.FC<CardsButtonContainer> = ({type}) => {
 
   return (
     <div className='cards_button-container'>
-        <ButtonCard onClick={handleOpenModal} className={`${type === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
+        <ButtonCard onClick={handleOpenModal} className={`${page === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
         <ButtonCard className='button-bin'><RiDeleteBin6Line /></ButtonCard>
 
         {
-          openModal && ( type==='Vacante'? (<ModalFormVacancy modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany modalType='edit' functionProp={handleCloseModal}/>))
+          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='edit' functionProp={handleCloseModal}/>))
         }
     </div>
   )

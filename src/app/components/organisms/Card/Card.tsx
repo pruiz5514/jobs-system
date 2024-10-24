@@ -4,10 +4,10 @@ import CardsButtonContainer from '../../molecules/CardButtonsContainer/CardsButt
 
 interface CardProps{
   children:React.ReactNode;
-  type: string
+  page: string
 }
 
-const Card: React.FC<CardProps> = ({children, type}) => {
+const Card: React.FC<CardProps> = ({children, page}) => {
   return (
     <article className='card-container'>
 
@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({children, type}) => {
         
 
       <div className='card_buttons-div'>
-        <CardsButtonContainer type={type}/>
+        <CardsButtonContainer page={page}/>
       </div>
         
         

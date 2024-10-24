@@ -7,7 +7,7 @@ export default function Home() {
       <PageTemplate
         title ='Panel de administración'
         subtitle='Vacantes'
-        type='Vacante'
+        page='Vacante'
       />
     </>
     

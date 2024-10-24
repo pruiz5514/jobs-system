@@ -11,9 +11,10 @@ import Textarea from "../../atoms/Textarea/Textarea"
 interface ModalFormVacancyProp{
   functionProp: ()=> void;
   modalType:string
+  page: string;
 }
 
-const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType}) => {
+const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page}) => {
   let view; 
 
   if(modalType === 'add'){
@@ -28,11 +29,11 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
           <Form>
             <LabelInputContainer>
               <Label htmlForm='title-input'>Título</Label>
-              <InputForm type='text' name='title-input' id="title-input"/>
+              <InputForm page={page} type='text' name='title-input' id="title-input"/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='description-textarea'>Descripción</Label>
-              <Textarea name='description-textarea' id="description-textarea"/>
+              <Textarea page={page} name='description-textarea' id="description-textarea"/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='state-select'>Estado</Label>

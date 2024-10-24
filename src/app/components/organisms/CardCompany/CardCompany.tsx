@@ -4,12 +4,12 @@ import P from '../../atoms/P/P'
 import TextContainer from '../../molecules/TextContainer/TextContainer'
 
 interface CardCompanyProps {
-    type: string
+    page: string
 }
 
-const CardCompany:React.FC<CardCompanyProps> = ({type}) =>{
+const CardCompany:React.FC<CardCompanyProps> = ({page}) =>{
   return (
-    <Card type={type}>
+    <Card page={page}>
         <H3>TechCorp</H3>
         <TextContainer>
         <P>Ciudad de México</P>

@@ -6,16 +6,16 @@ import ViewSection from '../ViewSection/ViewSection'
 interface HeaderProps{
   title: string;
   subtitle: string;
-  type: string
+  page: string
 }
 
 
-export const Header: React.FC<HeaderProps> = ({title, subtitle, type}) => {
+export const Header: React.FC<HeaderProps> = ({title, subtitle, page}) => {
   return (
     <header className='header'>
         <H1>{title}</H1>
-        <NavBar type={type}/>
-        <ViewSection subtitle={subtitle} type={type}/>
+        <NavBar page={page}/>
+        <ViewSection subtitle={subtitle} page={page}/>
     </header>
   )
 }

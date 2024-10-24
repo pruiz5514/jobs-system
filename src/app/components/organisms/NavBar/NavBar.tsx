@@ -4,13 +4,13 @@ import OptionsButtons from '../../molecules/OptionsButtons/OptionsButtons'
 import SearchInput from '../../molecules/SearchInput/SearchInput'
 
 interface NavBarProps {
-  type: string
+  page: string
 }  
 
-const NavBar:React.FC<NavBarProps> = ({type}) => {
+const NavBar:React.FC<NavBarProps> = ({page}) => {
   return (
     <nav className='nav'>
-      <OptionsButtons type={type}/>
+      <OptionsButtons page={page}/>
       <SearchInput/>
     </nav>
   )

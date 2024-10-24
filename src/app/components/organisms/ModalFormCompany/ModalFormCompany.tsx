@@ -10,9 +10,10 @@ import Modal from "../../atoms/Modal/Modal"
 interface ModalFormCompanyProp{
   functionProp: ()=> void;
   modalType:string
+  page : string
 }
 
-const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalType}) => {
+const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalType, page}) => {
   let view;
 
   if(modalType === 'add'){
@@ -27,15 +28,15 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
           <Form>
             <LabelInputContainer>
               <Label htmlForm='name-input'>Nombre</Label>
-              <InputForm type='text' name='name-input' id="name-input"/>
+              <InputForm page={page}  type='text' name='name-input' id="name-input"/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='location-input'>Ubicación</Label>
-              <InputForm type="text" name='location-input' id="location-input"/>
+              <InputForm page={page} type="text" name='location-input' id="location-input"/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='state-select'>Contacto</Label>
-              <InputForm type="text" name='location-input' id="location-input"/>
+              <InputForm page={page} type="text" name='location-input' id="location-input"/>
             </LabelInputContainer>
             <Button className='button-comp-modal'>{view}</Button>
           </Form>

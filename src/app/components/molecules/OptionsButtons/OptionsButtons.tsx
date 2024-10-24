@@ -5,14 +5,14 @@ import { BiBuildings } from 'react-icons/bi';
 import { PiSuitcase } from 'react-icons/pi';
 
 interface OptionsButtonsProps {
-    type: string
+    page: string
 }  
 
-const OptionsButtons:React.FC<OptionsButtonsProps>= ({type}) => {
+const OptionsButtons:React.FC<OptionsButtonsProps>= ({page}) => {
   return (
     <div className="options_buttons-container">
-      <Link href='/' className='link' style={{textDecoration:'none'}}> <Button className={type === 'Vacante' ? 'button-vacante' : ''} > <PiSuitcase /> Vacantes</Button></Link>
-      <Link href='/companias' className='link'> <Button  className={type === 'Compañía' ? 'button-comp' : ''}> <BiBuildings /> Compañías</Button> </Link>
+      <Link href='/' className='link' style={{textDecoration:'none'}}> <Button className={page === 'Vacante' ? 'button-vacante' : ''} > <PiSuitcase /> Vacantes</Button></Link>
+      <Link href='/companias' className='link'> <Button  className={page === 'Compañía' ? 'button-comp' : ''}> <BiBuildings /> Compañías</Button> </Link>
     </div>
   )
 }

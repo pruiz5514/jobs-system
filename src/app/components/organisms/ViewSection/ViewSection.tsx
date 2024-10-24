@@ -10,11 +10,11 @@ import ModalFormCompany from '../ModalFormCompany/ModalFormCompany';
 
 interface ViewSectionProps{
   subtitle: string;
-  type: string
+  page: string
 }
 
 
-const ViewSection: React.FC<ViewSectionProps> = ({subtitle, type}) => {
+const ViewSection: React.FC<ViewSectionProps> = ({subtitle, page}) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = ()=>{
@@ -28,9 +28,9 @@ const ViewSection: React.FC<ViewSectionProps> = ({subtitle, type}) => {
   return (
     <div className='view_section-container'>
         <H2>{subtitle}</H2>
-        <Button onClick={handleOpenModal} className={`${type==="Vacante"? "button-vacante" : "button-comp"}`}> <IoAddCircleOutline /> Agregar {type}</Button>
+        <Button onClick={handleOpenModal} className={`${page==="Vacante"? "button-vacante" : "button-comp"}`}> <IoAddCircleOutline /> Agregar {page}</Button>
         {
-          openModal && ( type==='Vacante'? (<ModalFormVacancy modalType='add' functionProp={handleCloseModal}/>) : (<ModalFormCompany modalType='add' functionProp={handleCloseModal}/>))
+          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='add' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='add' functionProp={handleCloseModal}/>))
         }
         
     </div>

@@ -5,7 +5,7 @@ export default function Home() {
       <PageTemplate
         title='Panel de administración'
         subtitle="Compañías"
-        type="Compañía"
+        page="Compañía"
       />
     );
   }

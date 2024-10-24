@@ -4,12 +4,12 @@ import P from '../../atoms/P/P'
 import TextContainer from '../../molecules/TextContainer/TextContainer'
 
 interface CardVacancyProps {
-    type: string
+    page: string
 }
 
-const CardVacancy:React.FC<CardVacancyProps> = ({type}) => {
+const CardVacancy:React.FC<CardVacancyProps> = ({page}) => {
   return (
-    <Card type={type}>
+    <Card page={page}>
         <H3>Desarrollador Frontend</H3>
         <TextContainer>
         <P>Se busca Desarrollador con experiencia en React</P>

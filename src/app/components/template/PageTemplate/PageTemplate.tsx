@@ -10,33 +10,33 @@ import CardCompany from '../../organisms/CardCompany/CardCompany'
 interface PageTemplateProps{
   title: string;
   subtitle: string;
-  type: string
+  page: string
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({title, subtitle, type}) => {
+const PageTemplate: React.FC<PageTemplateProps> = ({title, subtitle, page}) => {
   return (
     <main className='main'>
         <PanelContainer>
-            <Header title={title} subtitle={subtitle} type={type}/>
+            <Header title={title} subtitle={subtitle} page={page}/>
             <CardsContainer>
-              {type === 'Vacante' ? (
+              {page === 'Vacante' ? (
                 <>
-                  <CardVacancy type={type}/>
-                  <CardVacancy type={type}/>
-                  <CardVacancy type={type}/>
-                  <CardVacancy type={type}/>
-                  <CardVacancy type={type}/>
-                  <CardVacancy type={type}/>
+                  <CardVacancy page={page}/>
+                  <CardVacancy page={page}/>
+                  <CardVacancy page={page}/>
+                  <CardVacancy page={page}/>
+                  <CardVacancy page={page}/>
+                  <CardVacancy page={page}/>
                 </>
                   
               ) : (
                 <>
-                  <CardCompany type={type}/>
-                  <CardCompany type={type}/>
-                  <CardCompany type={type}/>
-                  <CardCompany type={type}/>
-                  <CardCompany type={type}/>
-                  <CardCompany type={type}/>
+                  <CardCompany page={page}/>
+                  <CardCompany page={page}/>
+                  <CardCompany page={page}/>
+                  <CardCompany page={page}/>
+                  <CardCompany page={page}/>
+                  <CardCompany page={page}/>
                 </>
               )}
            
