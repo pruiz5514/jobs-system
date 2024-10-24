@@ -13,6 +13,7 @@
     gap: 5px;
     font-size: 14px;
     background-color: $bg-gris-claro-inact;
+    color: $texto-negro;
 }
 
 .button-vacante{
@@ -22,6 +23,15 @@
 
 .button-vacante:hover{
     background-color: $boton-morado-hover;
+}
+
+.button-comp{
+    background-color: $boton-rosa;
+    color: $texto-blanco;
+}
+
+.button-comp:hover{
+    background-color: $boton-rosa-hover;
 }
 
 .button-pagination{

@@ -3,7 +3,9 @@ import './globals.scss'
 export default function Home() {
   return (
     <PageTemplate
-      h1='Panel de administración'
+      title ='Panel de administración'
+      subtitle='Vacantes'
+      type='Vacante'
     />
   );
 }
