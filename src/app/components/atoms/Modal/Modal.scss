@@ -18,6 +18,8 @@
         min-width: 300px;
         max-width: 800px;
         height: auto;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
         margin: auto;
         background-color: $bg-blanco;
         border-radius: $border-radius-container;
@@ -26,12 +28,16 @@
         flex-direction: column;
         gap: 40px;
 
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
         .button-modal{
             position: absolute;
             border: none;
             background-color: transparent;
             top: 15px;
-            right: 15px;
+            right: 0px;
             font-size: 30px;
             cursor: pointer;
         }
