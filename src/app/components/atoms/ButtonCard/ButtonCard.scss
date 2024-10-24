@@ -13,15 +13,23 @@
     cursor: pointer;
 }
 
-.button-pencil{
+.button-pencil-vacancy{
     color: $boton-morado;
+
+    &:hover{
+        background-color: $boton-morado-hover;
+        color: $texto-blanco;
+    }
 }
 
-.button-pencil:hover{
-    background-color: $boton-morado-hover;
-    color: $texto-blanco;
-}
+.button-pencil-company{
+    color: $boton-rosa;
 
+    &:hover{
+        background-color: $boton-rosa-hover;
+        color: $texto-blanco;
+    }
+}
 
 .button-bin{
     color: $boton-rojo-texto
