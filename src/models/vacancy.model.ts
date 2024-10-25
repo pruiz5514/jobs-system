@@ -1,5 +1,5 @@
-export interface ICompany {
-    content:          ContentCompany[];
+export interface IVacancy {
+    content:          ContentVacancy[];
     pageable:         Pageable;
     totalPages:       number;
     totalElements:    number;
@@ -12,19 +12,19 @@ export interface ICompany {
     empty:            boolean;
 }
 
-export interface ContentCompany {
-    id:       string;
-    name:     string;
-    location: string;
-    contact:  string;
-    vacants:  Vacant[];
-}
-
-export interface Vacant {
+export interface ContentVacancy {
     id:          number;
     title:       string;
     description: string;
     status:      string;
+    company:     Company;
+}
+
+export interface Company {
+    id:       string;
+    name:     string;
+    location: string;
+    contact:  string;
 }
 
 export interface Pageable {

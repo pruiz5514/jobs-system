@@ -21,7 +21,7 @@ export class HttpClient {
         return await response.json();
     }
 
-    private async get<T>(url:string): Promise<T> {
+    async get<T>(url:string): Promise<T> {
         const headers  = await this.getHeader();
         const response = await fetch (`${this.baseUrl}/${url}` , {
             method: 'GET',

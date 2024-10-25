@@ -1,3 +1,5 @@
+import { ICompany } from "@/models/company.model";
+import { IVacancy } from "@/models/vacancy.model";
 import { HttpClient } from "@/utils/client-http";
 
 export class ApiService {
@@ -7,9 +9,13 @@ export class ApiService {
         this.httpClient = new HttpClient();
     }
 
-    async findAll(){
+    async findAll(url:string){
         try{
-            const response = this.httpClient.get()
+            const response = this.httpClient.get<IVacancy | ICompany>(url);
+            return response
+        }catch(error){
+            console.log(error);
+            throw error;
         }
     }
         
