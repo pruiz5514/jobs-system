@@ -1,7 +1,7 @@
 import './PageTemplate.scss'
 
 import { PanelContainer } from '../../atoms/PanelContainer/PanelContainer'
-import CardsContainer from '../../organisms/CardsContainer/CardsContainer'
+import CardsContainer from '../../atoms/CardsContainer/CardsContainer'
 import { Header } from '../../organisms/Header/Header'
 import PaginationContainer from '../../molecules/PaginationContainer/PaginationContainer'
 import CardVacancy from '../../organisms/CardVacancy/CardVacancy'

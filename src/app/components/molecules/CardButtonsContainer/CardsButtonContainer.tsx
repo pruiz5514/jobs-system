@@ -9,25 +9,21 @@ import ModalFormVacancy from '../../organisms/ModalFormVacancy/ModalFormVacancy'
 import ModalFormCompany from '../../organisms/ModalFormCompany/ModalFormCompany';
 
 interface CardsButtonContainer{
-  page: string
+  page: string,
+  idCard: string
 }
 
-const CardsButtonContainer:React.FC<CardsButtonContainer> = ({page}) => {
+const CardsButtonContainer:React.FC<CardsButtonContainer> = ({page, idCard}) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = ()=>{
-    setOpenModal(true)
-  }
+  const handleOpenModal = ()=> setOpenModal(true)
 
-  const handleCloseModal = ()=>{
-    setOpenModal(false)
-  }
-
+  const handleCloseModal = ()=> setOpenModal(false)
 
   return (
     <div className='cards_button-container'>
-        <ButtonCard onClick={handleOpenModal} className={`${page === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
-        <ButtonCard className='button-bin'><RiDeleteBin6Line /></ButtonCard>
+        <ButtonCard idCard={idCard} onClick={handleOpenModal} className={`${page === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
+        <ButtonCard idCard={idCard} className='button-bin'><RiDeleteBin6Line /></ButtonCard>
 
         {
           openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='edit' functionProp={handleCloseModal}/>))

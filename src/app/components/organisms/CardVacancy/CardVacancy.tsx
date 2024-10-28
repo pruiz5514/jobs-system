@@ -1,6 +1,7 @@
-import Card from '../Card/Card'
+import Card from '../../atoms/Card/Card'
 import H3 from '../../atoms/H3/H3'
 import P from '../../atoms/P/P'
+import CardsButtonContainer from '../../molecules/CardButtonsContainer/CardsButtonContainer'
 import TextContainer from '../../molecules/TextContainer/TextContainer'
 import { ContentVacancy } from '@/models/vacancy.model'
 
@@ -19,6 +20,9 @@ const CardVacancy:React.FC<CardVacancyProps> = ({page, data}) => {
         <P>Activo: {data.status === 'ACTIVE' ? 'Activo' : 'Inactivo'}</P>
         <P>Compañia: {data.company.name}</P>
         </TextContainer>
+        <div className='card_buttons-div'>
+          <CardsButtonContainer page={page}/>
+        </div>
     </Card>
   )
 }

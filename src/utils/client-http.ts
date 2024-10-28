@@ -1,4 +1,4 @@
-const defaultBaseUrl = "http://192.168.88.153/api/v1";
+const defaultBaseUrl = "https://vacantsbackendgates-production.up.railway.app/api/v1";
 
 export class HttpClient {
     private baseUrl: string
@@ -25,9 +25,31 @@ export class HttpClient {
         const headers  = await this.getHeader();
         const response = await fetch (`${this.baseUrl}/${url}` , {
             method: 'GET',
-            headers: headers
+            headers: headers,
+            cache: "no-store"
         });
 
        return this.handleResponse(response)
+    }
+
+    async delete<T>(url: string): Promise<T> {
+        const headers = await this.getHeader();
+        const response = await fetch(`${this.baseUrl}/${url}`,{
+            method: 'DELETE',
+            headers: headers
+        });
+
+        return this.handleResponse(response);this.getHeader();
+    }
+
+    async post<B,T>(url:string, body:B): Promise<T>{
+        const headers = await this.getHeader();
+        const response = await fetch(`${this.baseUrl}/${url}`,{
+            headers: headers,
+            method: 'POST',
+            body: JSON.stringify(body)
+        });
+
+        return this.handleResponse(response);
     }
 }

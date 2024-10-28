@@ -17,13 +17,9 @@ interface ViewSectionProps{
 const ViewSection: React.FC<ViewSectionProps> = ({subtitle, page}) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = ()=>{
-    setOpenModal(true)
-  }
+  const handleOpenModal = ()=> setOpenModal(true);
 
-  const handleCloseModal = ()=>{
-    setOpenModal(false)
-  }
+  const handleCloseModal = ()=> setOpenModal(false);
 
   return (
     <div className='view_section-container'>

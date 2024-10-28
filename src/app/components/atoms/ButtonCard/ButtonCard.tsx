@@ -3,12 +3,13 @@ import './ButtonCard.scss'
 interface ButtonCardProps {
     children: React.ReactNode;
     className?: string;
-    onClick? : ()=> void
+    onClick? : ()=> void;
+    idCard : string
   }  
 
-const ButtonCard:React.FC<ButtonCardProps> = ({children, className, onClick}) => {
+const ButtonCard:React.FC<ButtonCardProps> = ({children, className, onClick, idCard}) => {
   return (
-    <button onClick={onClick} className={`button-container ${className}`}>
+    <button id-card={idCard} onClick={onClick} className={`button-container ${className}`}>
         {children}
     </button>
   )

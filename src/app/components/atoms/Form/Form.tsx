@@ -2,11 +2,12 @@ import './Form.scss'
 
 interface FormProps{
     children: React.ReactNode;
+    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Form : React.FC<FormProps> = ({children}) => {
+const Form : React.FC<FormProps> = ({children, onSubmit}) => {
   return (
-    <form className='form'>
+    <form onSubmit={onSubmit} className='form'>
         {children}
     </form>
   )

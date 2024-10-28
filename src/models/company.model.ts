@@ -41,3 +41,9 @@ export interface Sort {
     unsorted: boolean;
     empty:    boolean;
 }
+
+export interface IPostCompany{
+    name: string;
+    location: string;
+    contact: string;
+}
