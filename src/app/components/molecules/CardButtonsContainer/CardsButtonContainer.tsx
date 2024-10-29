@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 
 interface CardsButtonContainerProps{
   page: string,
-  idCard: string
+  idCard: string 
 }
 
 const useApiService = new ApiService();
@@ -25,7 +25,11 @@ const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard}
   const handleCloseModal = ()=> setOpenModal(false);
 
   const handleDelete = async()=> {
-    await useApiService.destroy(`company`,idCard);
+    if(page === 'Vacante'){
+      await useApiService.destroy(`vacants`,idCard);
+    }else{
+      await useApiService.destroy(`company`,idCard);
+    }
     router.refresh();
   }
 

@@ -21,7 +21,7 @@ const CardVacancy:React.FC<CardVacancyProps> = ({page, data}) => {
         <P>Compañia: {data.company.name}</P>
         </TextContainer>
         <div className='card_buttons-div'>
-          <CardsButtonContainer page={page}/>
+          <CardsButtonContainer idCard={String(data.id)} page={page}/>
         </div>
     </Card>
   )
