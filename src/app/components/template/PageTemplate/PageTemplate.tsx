@@ -40,7 +40,7 @@ const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, 
             <CardsContainer>
               {renderContent()}
             </CardsContainer>
-            <PaginationContainer/>
+            <PaginationContainer data={data}/>
         </PanelContainer>
     </main>
   )

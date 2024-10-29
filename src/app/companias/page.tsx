@@ -3,8 +3,27 @@ import PageTemplate from "../components/template/PageTemplate/PageTemplate";
 
 const useApiService = new ApiService();
 
-export default async function Companias() {
-  const data = await useApiService.findAll('company?page=1&size=10000');
+interface IProps {
+  searchParams : {
+    page: string;
+    size:string;
+    name:string;
+  }
+}
+
+const generateMetadata = async ({searchParams}:IProps) =>{
+  const page = searchParams.page ?? 1;
+  return{
+    title: `Compañías - Página ${page}`,
+    description: 'Gestion de compañías'
+  }
+}
+
+export default async function Companias({searchParams}:IProps) {
+  const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const size = searchParams.size ? parseInt(searchParams.size) : 6;
+
+  const data = await useApiService.findAll(`company?page=${page}&size=${size}`);
 
     return (
       <PageTemplate
