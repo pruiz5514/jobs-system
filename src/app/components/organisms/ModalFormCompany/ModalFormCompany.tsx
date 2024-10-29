@@ -8,20 +8,23 @@ import InputForm from "../../atoms/InputForm/InputForm"
 import Label from "../../atoms/Label/Label"
 import LabelInputContainer from "../../atoms/LabelInputContainer/LabelInputContainer"
 import Modal from "../../atoms/Modal/Modal"
-import { IPostCompany } from "@/models/company.model"
+import { ContentCompany, IPostCompany } from "@/models/company.model"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react";
 
 
 interface ModalFormCompanyProp{
   functionProp: ()=> void;
   modalType:string
   page : string
+  idCard: string
 }
 
 const useApiService = new ApiService();
 
-const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalType, page}) => {
+const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalType, page, idCard}) => {
   let view;
+  const router = useRouter();
 
   if(modalType === 'add'){
     view = 'Agregar'
@@ -29,26 +32,50 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
     view = 'Editar'
   }
 
-  const router = useRouter();
+  const initialState = {
+    name: '',
+    location: '',
+    contact:''
+  }
+
+  const [company, setCompany] = useState<IPostCompany>(initialState);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement |HTMLSelectElement>)=>{
+    const {name , value} = event?.target;
+    setCompany({
+        ...company,
+        [name]:value
+    })
+};
+
+  if(modalType !== 'add'){
+    useEffect(()=>{
+      const getCompanyById = async() => {
+        const company = await useApiService.findById('company', idCard) as ContentCompany;
+
+        setCompany({
+          name:company.name,
+          location: company.location,
+          contact: company.contact
+        })
+      }
+      getCompanyById();
+    },[]);
+  }
+
   const handleSubmit = async(event:React.FormEvent<HTMLFormElement>)=> {
-    
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
 
-    const title = formData.get('name-input') as string;
-    const location = formData.get('location-input') as string;
-    const contact = formData.get('contact-input') as string;
-    
-    const newCompany: IPostCompany ={
-      name: title,
-      location: location,
-      contact: contact
+    if(modalType === 'add'){
+      await useApiService.post('company',company);
+    }else{
+      await useApiService.edit('company',idCard,company)
     }
-
-    await useApiService.post('company',newCompany);
+    
     functionProp();
     router.refresh()
   }
+
 
   return (
     <Modal functionProp={functionProp}>
@@ -56,15 +83,15 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
           <Form onSubmit={handleSubmit}>
             <LabelInputContainer>
               <Label htmlForm='name-input'>Nombre</Label>
-              <InputForm page={page}  type='text' name='name-input' id="name-input"/>
+              <InputForm page={page}  type='text' name='name' id="name-input" value={company?.name} onChange={handleChange}/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='location-input'>Ubicación</Label>
-              <InputForm page={page} type="text" name='location-input' id="location-input"/>
+              <InputForm page={page} type="text" name='location' id="location-input" value={company?.location} onChange={handleChange}/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='contact-input'>Contacto</Label>
-              <InputForm page={page} type="text" name='contact-input' id="contact-input"/>
+              <InputForm page={page} type="text" name='contact' id="contact-input" value={company?.contact} onChange={handleChange}/>
             </LabelInputContainer>
             <Button className='button-comp-modal'>{view}</Button>
           </Form>

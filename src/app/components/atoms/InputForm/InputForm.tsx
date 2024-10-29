@@ -6,12 +6,13 @@ interface InputFormProps{
   name: string;
   id : string;
   page: string;
+  value?: string; 
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({type, name, id, page }) => {
+const InputForm: React.FC<InputFormProps> = ({type, name, id, page, value, onChange }) => {
   return (
-    <input className={`inputForm ${page === 'Vacante' ? "inputForm-vacancy" : "inputForm-company"}`} type={type}  name={name} id={id}/>
-    
+    <input className={`inputForm ${page === 'Vacante' ? "inputForm-vacancy" : "inputForm-company"}`} type={type}  name={name} value={value} id={id} onChange={onChange} />
   )
 }
 

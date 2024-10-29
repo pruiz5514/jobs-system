@@ -29,13 +29,14 @@ const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard}
     router.refresh();
   }
 
+
   return (
     <div className='cards_button-container'>
         <ButtonCard onClick={handleOpenModal} className={`${page === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
         <ButtonCard onClick={handleDelete} className='button-bin'><RiDeleteBin6Line /></ButtonCard>
 
         {
-          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='edit' functionProp={handleCloseModal}/>))
+          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany  page={page} modalType='edit' idCard={idCard} functionProp={handleCloseModal}/>))
         }
     </div>
   )
