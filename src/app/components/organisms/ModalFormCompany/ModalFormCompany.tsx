@@ -60,7 +60,6 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
             contact: company.contact
           })
         }
-        
       }
       getCompanyById();
     },[]);

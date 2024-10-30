@@ -6,8 +6,10 @@
     resize: none;
     border: $input-form-border;
     border-radius: $input-form-border-radius;
-    padding: 15px
-}
+    padding: 15px;
+    font-size: $input-form-font-size;
+    color: $input-form-color;
+};
 
 .textarea:focus{
     border: 1px solid $borde-focus-morado;

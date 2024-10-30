@@ -1,5 +1,5 @@
 import { ContentCompany, ICompany, IPostCompany } from "@/models/company.model";
-import { ContentVacancy, IVacancy } from "@/models/vacancy.model";
+import { ContentVacancy, IPostVacancy, IVacancy } from "@/models/vacancy.model";
 import { HttpClient } from "@/utils/client-http";
 
 export class ApiService {
@@ -56,7 +56,17 @@ export class ApiService {
             console.log(error);
             throw error;
         }
-    }        
+    }   
+    
+    async postVacancy(url:string,body:IPostVacancy){
+        try{
+            const newData = await this.httpClient.post<IPostVacancy, ContentVacancy>(url,body);
+            return newData
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+    }  
 
     async edit(url:string, id:string, body:IPostCompany){
         try{

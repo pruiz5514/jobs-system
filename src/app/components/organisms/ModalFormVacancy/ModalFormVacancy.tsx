@@ -9,14 +9,23 @@ import Modal from "../../atoms/Modal/Modal"
 import Select from "../../atoms/Select/Select"
 import Textarea from "../../atoms/Textarea/Textarea"
 import { IPostVacancy } from "@/models/vacancy.model"
+import { ContentCompany } from "@/models/company.model"
+import { ApiService } from "@/services/api.service"
+import { useRouter } from "next/navigation"
+import AutocompleteContainer from "../../atoms/AutocompleteContainer/AutocompleteContainer"
 
 interface ModalFormVacancyProp{
   functionProp: ()=> void;
   modalType:string
   page: string;
+  companies?: ContentCompany[];
 }
 
-const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page}) => {
+const useApiService = new ApiService();
+
+const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page,companies}) => {
+  const router = useRouter();
+
   let view; 
 
   if(modalType === 'add'){
@@ -29,10 +38,12 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     title: '',
     description: '',
     status: '',
-    companyID: ''
+    companyId: ''
   };
 
   const [vacant, setVacant] = useState<IPostVacancy>(initialState);
+  const [searchedCompanies, setSearchedCompanies] = useState<ContentCompany[]>([])
+  const [companySelected, setCompanySelected] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement |HTMLSelectElement | HTMLTextAreaElement>) => {
     const {name, value} = event?.target;
@@ -42,11 +53,36 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     })
   }
 
+  const companyChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+    if(companies){
+      const searchInput =  event.currentTarget.value.toLocaleLowerCase() as string;
+      setCompanySelected(searchInput);
+      if(searchInput === ''){
+        setSearchedCompanies([])
+      } else{
+        const filteredCompanies = companies?.filter((company)=>company.name.toLocaleLowerCase().includes(searchInput));
+        setSearchedCompanies(filteredCompanies)
+      }
+    }
+  }
+
+  const handelCompanySelect = (company: ContentCompany) => {
+    setCompanySelected(company.name)
+    setVacant({
+      ...vacant, 
+      companyId: company.id
+    })
+    setSearchedCompanies([]);
+  }
+
   const handleSubmit =  async(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     console.log(vacant);
+    await useApiService.postVacancy('vacants',vacant);
+    functionProp();
+    router.refresh();
   }
-
+  
   return (
     <Modal functionProp={functionProp}>
           <H2>{view} vacante</H2>
@@ -68,7 +104,17 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='company-input'>Compañía</Label>
-              <InputForm page={page} type='text' name='companyId' id="company-input" onChange={handleChange}/>
+              <div>
+                <InputForm page={page} type='text' name='companyId' id="company-input" onChange={companyChange} value={companySelected}/>
+                {searchedCompanies.length>0 && (
+                  <AutocompleteContainer>
+                    {searchedCompanies?.map((company)=>(
+                      <span className="autocomplete-span" onClick={()=>handelCompanySelect(company)} key={company.id}>{company.name}</span>
+                    ))}
+                  </AutocompleteContainer>
+                )}
+              </div>
+              
             </LabelInputContainer>
             <Button className='button-vacante-modal'>{view}</Button>
           </Form>

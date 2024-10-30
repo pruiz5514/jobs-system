@@ -12,11 +12,11 @@ import { ContentCompany } from '@/models/company.model';
 interface ViewSectionProps{
   subtitle: string;
   page: string;
-  companies?: ContentCompany;
+  companies?: ContentCompany[];
 }
 
 
-const ViewSection: React.FC<ViewSectionProps> = ({subtitle, page}) => {
+const ViewSection: React.FC<ViewSectionProps> = ({subtitle, page, companies}) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = ()=> setOpenModal(true);
@@ -28,7 +28,7 @@ const ViewSection: React.FC<ViewSectionProps> = ({subtitle, page}) => {
         <H2>{subtitle}</H2>
         <Button onClick={handleOpenModal} className={`${page==="Vacante"? "button-vacante" : "button-comp"}`}> <IoAddCircleOutline /> Agregar {page}</Button>
         {
-          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='add' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='add' functionProp={handleCloseModal}/>))
+          openModal && ( page==='Vacante'? (<ModalFormVacancy companies={companies} page={page} modalType='add' functionProp={handleCloseModal}/>) : (<ModalFormCompany page={page} modalType='add' functionProp={handleCloseModal}/>))
         }
         
     </div>

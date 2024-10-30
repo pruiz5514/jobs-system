@@ -1,0 +1,25 @@
+@import '/src/app/globals.scss';
+
+.autocomplete-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: $input-form-border;
+    border-top: none;
+    border-bottom-left-radius: $input-form-border-radius;
+    border-bottom-right-radius: $input-form-border-radius;
+    font-size: $input-form-font-size;
+    color: $input-form-color;
+
+    .autocomplete-span{
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        height: 45px;
+        &:hover{
+            background-color: #d2d2d2;
+        }
+    }
+}

@@ -8,7 +8,7 @@ interface HeaderProps{
   title: string;
   subtitle: string;
   page: string;
-  companies?: ContentCompany;
+  companies?: ContentCompany[];
 }
 
 
