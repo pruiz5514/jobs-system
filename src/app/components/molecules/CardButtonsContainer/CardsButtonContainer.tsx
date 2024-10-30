@@ -9,15 +9,17 @@ import ModalFormVacancy from '../../organisms/ModalFormVacancy/ModalFormVacancy'
 import ModalFormCompany from '../../organisms/ModalFormCompany/ModalFormCompany';
 import { ApiService } from '@/services/api.service';
 import { useRouter } from 'next/navigation';
+import { ContentCompany } from '@/models/company.model';
 
 interface CardsButtonContainerProps{
   page: string,
-  idCard: string 
+  idCard: string,
+  companies?: ContentCompany[];
 }
 
 const useApiService = new ApiService();
 
-const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard}) => {
+const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard, companies}) => {
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
 
@@ -40,7 +42,7 @@ const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard}
         <ButtonCard onClick={handleDelete} className='button-bin'><RiDeleteBin6Line /></ButtonCard>
 
         {
-          openModal && ( page==='Vacante'? (<ModalFormVacancy page={page} modalType='edit' functionProp={handleCloseModal}/>) : (<ModalFormCompany  page={page} modalType='edit' idCard={idCard} functionProp={handleCloseModal}/>))
+          openModal && ( page==='Vacante'? (<ModalFormVacancy companies={companies} page={page} modalType='edit' idCard={idCard} functionProp={handleCloseModal}/>) : (<ModalFormCompany  page={page} modalType='edit' idCard={idCard} functionProp={handleCloseModal}/>))
         }
     </div>
   )

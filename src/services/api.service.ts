@@ -21,7 +21,7 @@ export class ApiService {
 
     async findAllCompanies(url:string){
         try{
-            const response = this.httpClient.get<ContentCompany >(url);
+            const response = this.httpClient.get<ContentCompany[]>(url);
             return response
         }catch(error){
             console.log(error);
@@ -71,6 +71,16 @@ export class ApiService {
     async edit(url:string, id:string, body:IPostCompany){
         try{
             const editData = await this.httpClient.put<IPostCompany,ContentCompany>(`${url}/${id}`,body);
+            return editData;
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+    }
+
+    async editVacant(url:string, id:string, body:IPostVacancy){
+        try{
+            const editData = await this.httpClient.put<IPostVacancy,ContentVacancy>(`${url}/${id}`,body);
             return editData;
         }catch(error){
             console.log(error);

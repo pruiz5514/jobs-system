@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "../../atoms/Button/Button"
 import Form from "../../atoms/Form/Form"
 import H2 from "../../atoms/H2/H2"
@@ -8,7 +8,7 @@ import LabelInputContainer from "../../atoms/LabelInputContainer/LabelInputConta
 import Modal from "../../atoms/Modal/Modal"
 import Select from "../../atoms/Select/Select"
 import Textarea from "../../atoms/Textarea/Textarea"
-import { IPostVacancy } from "@/models/vacancy.model"
+import { ContentVacancy, IPostVacancy } from "@/models/vacancy.model"
 import { ContentCompany } from "@/models/company.model"
 import { ApiService } from "@/services/api.service"
 import { useRouter } from "next/navigation"
@@ -19,11 +19,12 @@ interface ModalFormVacancyProp{
   modalType:string
   page: string;
   companies?: ContentCompany[];
+  idCard?: string
 }
 
 const useApiService = new ApiService();
 
-const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page,companies}) => {
+const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page,companies, idCard}) => {
   const router = useRouter();
 
   let view; 
@@ -37,7 +38,7 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
   const initialState:IPostVacancy = {
     title: '',
     description: '',
-    status: '',
+    status: 'ACTIVE',
     companyId: ''
   };
 
@@ -75,10 +76,35 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     setSearchedCompanies([]);
   }
 
+  if(modalType !== 'add'){
+    useEffect(()=>{
+      const getVacantById = async()=>{
+        if(idCard){
+          const vacant = await useApiService.findById('vacants',idCard) as ContentVacancy;
+
+          setVacant({
+            title: vacant.title,
+            description: vacant.description,
+            status: vacant.status,
+            companyId: String(vacant.company.id),
+          })
+          setCompanySelected(vacant.company.name)
+        }
+      }
+      getVacantById();
+    },[])
+
+  }
+
   const handleSubmit =  async(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    console.log(vacant);
-    await useApiService.postVacancy('vacants',vacant);
+
+    if(modalType === 'add'){
+      await useApiService.postVacancy('vacants',vacant);
+    }else{
+      if(idCard) await useApiService.editVacant('vacants', idCard, vacant);
+    }
+    
     functionProp();
     router.refresh();
   }
@@ -89,23 +115,30 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
           <Form onSubmit={handleSubmit}>
             <LabelInputContainer>
               <Label htmlForm='title-input'>Título</Label>
-              <InputForm page={page} type='text' name='title' id="title-input" onChange={handleChange}/>
+              <InputForm page={page} type='text' name='title' id="title-input" onChange={handleChange} value={vacant.title}/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='description-textarea'>Descripción</Label>
-              <Textarea page={page} name='description' id="description-textarea" onChange={handleChange}/>
+              <Textarea page={page} name='description' id="description-textarea" onChange={handleChange} value={vacant.description}/>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='state-select'>Estado</Label>
-              <Select name='status' id="state-select" onChange={handleChange}>
-                <option value="ACTIVE" >Activo</option>
-                <option value="INACTVE">Inactivo</option>
+              <Select name='status' id="state-select" onChange={handleChange} value={vacant.status}>
+                {modalType ==='add' ? (
+                  <option value="ACTIVE" >Activo</option>
+                ) : (
+                  <>
+                    <option value="ACTIVE" >Activo</option>
+                    <option value="INACTIVE">Inactivo</option>
+                  </>
+                )}
+                
               </Select>
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlForm='company-input'>Compañía</Label>
               <div>
-                <InputForm page={page} type='text' name='companyId' id="company-input" onChange={companyChange} value={companySelected}/>
+                <InputForm page={page} type='text' name='companyId' id="company-input" onChange={companyChange} value={companySelected} />
                 {searchedCompanies.length>0 && (
                   <AutocompleteContainer>
                     {searchedCompanies?.map((company)=>(

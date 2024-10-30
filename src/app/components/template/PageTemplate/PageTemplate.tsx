@@ -15,7 +15,7 @@ interface PageTemplateProps{
   subtitle: string;
   page: string
   data: IVacancy | ICompany;
-  companies?: ContentCompany;
+  companies?: ContentCompany[];
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, data, companies}) => {
@@ -24,7 +24,7 @@ const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, 
     if (page === 'Vacante') {
         const vacancyData = data as IVacancy;
         return vacancyData.content.map((vacancy: ContentVacancy) => (
-            <CardVacancy key={vacancy.id} data={vacancy} page={page} />
+            <CardVacancy companies={companies} key={vacancy.id} data={vacancy} page={page} />
         ));
     } else {
         const companyData = data as ICompany;

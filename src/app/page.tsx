@@ -26,8 +26,6 @@ export default async function Home({searchParams}:IProps) {
 
   const data = await useApiService.findAll(`vacants?page=${page}&size=${size}`);
   const companies = await useApiService.findAllCompanies(`company/all`);
-
-  console.log(companies);
   
   return (
     

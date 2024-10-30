@@ -1,3 +1,4 @@
+import { ContentCompany } from '@/models/company.model'
 import Card from '../../atoms/Card/Card'
 import H3 from '../../atoms/H3/H3'
 import P from '../../atoms/P/P'
@@ -8,10 +9,11 @@ import { ContentVacancy } from '@/models/vacancy.model'
 
 interface CardVacancyProps {
     page: string,
-    data: ContentVacancy
+    data: ContentVacancy;
+    companies?: ContentCompany[];
 }
 
-const CardVacancy:React.FC<CardVacancyProps> = ({page, data}) => {
+const CardVacancy:React.FC<CardVacancyProps> = ({page, data, companies}) => {
   return (
     <Card page={page} >
         <H3>{data.title}</H3>
@@ -21,7 +23,7 @@ const CardVacancy:React.FC<CardVacancyProps> = ({page, data}) => {
         <P>Compañia: {data.company.name}</P>
         </TextContainer>
         <div className='card_buttons-div'>
-          <CardsButtonContainer idCard={String(data.id)} page={page}/>
+          <CardsButtonContainer companies={companies} idCard={String(data.id)} page={page}/>
         </div>
     </Card>
   )
