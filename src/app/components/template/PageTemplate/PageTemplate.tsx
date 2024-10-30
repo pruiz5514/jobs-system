@@ -14,10 +14,11 @@ interface PageTemplateProps{
   title: string;
   subtitle: string;
   page: string
-  data: IVacancy | ICompany
+  data: IVacancy | ICompany;
+  companies?: ContentCompany;
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, data}) => {
+const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, data, companies}) => {
 
   const renderContent = () => {
     if (page === 'Vacante') {
@@ -36,7 +37,7 @@ const PageTemplate: React.FC<PageTemplateProps> = async({title, subtitle, page, 
   return (
     <main className='main'>
         <PanelContainer>
-            <Header title={title} subtitle={subtitle} page={page}/>
+            <Header title={title} subtitle={subtitle} page={page} companies={companies}/>
             <CardsContainer>
               {renderContent()}
             </CardsContainer>

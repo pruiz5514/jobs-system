@@ -25,6 +25,10 @@ export default async function Home({searchParams}:IProps) {
   const size = searchParams.size ? parseInt(searchParams.size) : 6;
 
   const data = await useApiService.findAll(`vacants?page=${page}&size=${size}`);
+  const companies = await useApiService.findAllCompanies(`company/all`);
+
+  console.log(companies);
+  
   return (
     
     <>
@@ -33,6 +37,7 @@ export default async function Home({searchParams}:IProps) {
         subtitle='Vacantes'
         page='Vacante'
         data = {data}
+        companies = {companies}
       />
     </>
     

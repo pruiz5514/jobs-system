@@ -17,7 +17,7 @@ interface ModalFormCompanyProp{
   functionProp: ()=> void;
   modalType:string
   page : string
-  idCard: string
+  idCard?: string
 }
 
 const useApiService = new ApiService();
@@ -51,13 +51,16 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
   if(modalType !== 'add'){
     useEffect(()=>{
       const getCompanyById = async() => {
-        const company = await useApiService.findById('company', idCard) as ContentCompany;
+        if(idCard){
+          const company = await useApiService.findById('company', idCard) as ContentCompany;
 
-        setCompany({
-          name:company.name,
-          location: company.location,
-          contact: company.contact
-        })
+          setCompany({
+            name:company.name,
+            location: company.location,
+            contact: company.contact
+          })
+        }
+        
       }
       getCompanyById();
     },[]);
@@ -69,7 +72,7 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
     if(modalType === 'add'){
       await useApiService.post('company',company);
     }else{
-      await useApiService.edit('company',idCard,company)
+      if(idCard) await useApiService.edit('company',idCard,company)
     }
     
     functionProp();

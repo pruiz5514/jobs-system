@@ -7,10 +7,12 @@ import { IoAddCircleOutline } from 'react-icons/io5'
 import { useState } from 'react';
 import ModalFormVacancy from '../ModalFormVacancy/ModalFormVacancy';
 import ModalFormCompany from '../ModalFormCompany/ModalFormCompany';
+import { ContentCompany } from '@/models/company.model';
 
 interface ViewSectionProps{
   subtitle: string;
-  page: string
+  page: string;
+  companies?: ContentCompany;
 }
 
 

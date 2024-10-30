@@ -11,7 +11,17 @@ export class ApiService {
 
     async findAll(url:string){
         try{
-            const response = this.httpClient.get<IVacancy | ICompany>(url);
+            const response = this.httpClient.get<IVacancy | ICompany >(url);
+            return response
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+    }
+
+    async findAllCompanies(url:string){
+        try{
+            const response = this.httpClient.get<ContentCompany >(url);
             return response
         }catch(error){
             console.log(error);
