@@ -76,12 +76,12 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     setSearchedCompanies([]);
   }
 
-  if(modalType !== 'add'){
-    useEffect(()=>{
+  useEffect(()=>{
+    if(modalType !=='add'){
       const getVacantById = async()=>{
         if(idCard){
           const vacant = await useApiService.findById('vacants',idCard) as ContentVacancy;
-
+  
           setVacant({
             title: vacant.title,
             description: vacant.description,
@@ -92,9 +92,9 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
         }
       }
       getVacantById();
-    },[])
+    }
+  },[])
 
-  }
 
   const handleSubmit =  async(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();

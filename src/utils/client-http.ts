@@ -1,5 +1,3 @@
-import { headers } from "next/headers";
-
 const defaultBaseUrl = "https://vacantsbackendgates-production.up.railway.app/api/v1";
 
 export class HttpClient {

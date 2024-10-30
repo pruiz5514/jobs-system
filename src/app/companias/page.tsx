@@ -11,13 +11,15 @@ interface IProps {
   }
 }
 
-const generateMetadata = async ({searchParams}:IProps) =>{
+export const generateMetadata = async ({searchParams}:IProps) =>{
   const page = searchParams.page ?? 1;
   return{
     title: `Compañías - Página ${page}`,
     description: 'Gestion de compañías'
   }
 }
+
+
 
 export default async function Companias({searchParams}:IProps) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;

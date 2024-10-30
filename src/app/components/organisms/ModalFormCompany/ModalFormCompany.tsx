@@ -48,22 +48,24 @@ const ModalFormCompany:React.FC<ModalFormCompanyProp> = ({functionProp, modalTyp
     })
 };
 
-  if(modalType !== 'add'){
+  
     useEffect(()=>{
-      const getCompanyById = async() => {
-        if(idCard){
-          const company = await useApiService.findById('company', idCard) as ContentCompany;
+      if(modalType !== 'add'){
+        const getCompanyById = async() => {
+          if(idCard){
+            const company = await useApiService.findById('company', idCard) as ContentCompany;
 
-          setCompany({
-            name:company.name,
-            location: company.location,
-            contact: company.contact
-          })
+            setCompany({
+              name:company.name,
+              location: company.location,
+              contact: company.contact
+            })
+          }
         }
+        getCompanyById();
       }
-      getCompanyById();
     },[]);
-  }
+  
 
   const handleSubmit = async(event:React.FormEvent<HTMLFormElement>)=> {
     event.preventDefault();
