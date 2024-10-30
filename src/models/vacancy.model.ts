@@ -41,3 +41,10 @@ export interface Sort {
     unsorted: boolean;
     empty:    boolean;
 }
+
+export interface IPostVacancy {
+    title: string;
+    description: string;
+    status: string;
+    companyID: string;
+}

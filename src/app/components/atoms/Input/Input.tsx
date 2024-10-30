@@ -1,12 +1,13 @@
 import './Input.scss'
 
 interface InputProps{
-    placeholder: string
+    placeholder: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input:React.FC<InputProps> = ({placeholder}) => {
+const Input:React.FC<InputProps> = ({placeholder, onChange}) => {
   return (
-   <input className='input' type="text" placeholder={placeholder}/>
+   <input className='input' type="text" placeholder={placeholder} onChange={onChange}/>
   )
 }
 
