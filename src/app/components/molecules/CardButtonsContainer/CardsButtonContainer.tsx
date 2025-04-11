@@ -35,7 +35,6 @@ const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard,
     router.refresh();
   }
 
-
   return (
     <div className='cards_button-container'>
         <ButtonCard onClick={handleOpenModal} className={`${page === 'Vacante' ? 'button-pencil-vacancy' : 'button-pencil-company'}`}><GoPencil /></ButtonCard>
