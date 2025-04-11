@@ -46,5 +46,5 @@ export interface IPostVacancy {
     title: string;
     description: string;
     status: string;
-    companyId: string;
+    company_id: Number;
 }

@@ -22,13 +22,13 @@ const PaginationContainer: React.FC<IPaginationProps> = ({data}) => {
     router.push(`?${params.toString()}`)
   };
 
-  const currentPage = data.pageable.pageNumber + 1;
+  const currentPage = data.pageable.pageNumber;
 
   return (
     <div className='pagination-container'>
-        <Button onClick={()=> onPageChange(currentPage-1)} className={currentPage===1 ? 'hidden' : 'button-pagination'}><IoChevronBackSharp /></Button>
-        <P>Página {currentPage} de {data.totalPages} </P>
-        <Button onClick={()=> onPageChange(currentPage+1)} className={currentPage===data.totalPages ? 'hidden' : 'button-pagination'}><IoChevronForwardSharp /></Button>
+        <Button onClick={()=> onPageChange(currentPage-1)} className={currentPage===0 ? 'hidden' : 'button-pagination'}><IoChevronBackSharp /></Button>
+        <P>Página {currentPage + 1} de {data.totalPages} </P>
+        <Button onClick={()=> onPageChange(currentPage+1)} className={(currentPage+1)===data.totalPages ? 'hidden' : 'button-pagination'}><IoChevronForwardSharp /></Button>
     </div>
   )
 }

@@ -22,7 +22,7 @@ export class ApiService {
 
     async findAllCompanies(url:string){
         try{
-            const response = this.httpClient.get<ContentCompany[]>(url);
+            const response = this.httpClient.get<ICompany>(url);
             return response
         }catch(error){
             console.log(error);

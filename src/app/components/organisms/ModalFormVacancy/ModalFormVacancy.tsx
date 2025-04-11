@@ -26,7 +26,6 @@ const useApiService = new ApiService();
 
 const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalType,page,companies, idCard}) => {
   const router = useRouter();
-
   let view; 
 
   if(modalType === 'add'){
@@ -39,7 +38,7 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     title: '',
     description: '',
     status: 'ACTIVE',
-    companyId: ''
+    company_id: 0
   };
 
   const [vacant, setVacant] = useState<IPostVacancy>(initialState);
@@ -71,7 +70,7 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     setCompanySelected(company.name)
     setVacant({
       ...vacant, 
-      companyId: company.id
+      company_id: Number(company.id)
     })
     setSearchedCompanies([]);
   }
@@ -80,13 +79,13 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     if(modalType !=='add'){
       const getVacantById = async()=>{
         if(idCard){
-          const vacant = await useApiService.findById('vacants',idCard) as ContentVacancy;
+          const vacant = await useApiService.findById('vacancy',idCard) as ContentVacancy;
   
           setVacant({
             title: vacant.title,
             description: vacant.description,
             status: vacant.status,
-            companyId: String(vacant.company.id),
+            company_id: Number(vacant.company.id),
           })
           setCompanySelected(vacant.company.name)
         }
@@ -100,9 +99,9 @@ const ModalFormVacancy:React.FC<ModalFormVacancyProp> = ({functionProp, modalTyp
     event.preventDefault();
 
     if(modalType === 'add'){
-      await useApiService.postVacancy('vacants',vacant);
+      await useApiService.postVacancy('vacancy',vacant);
     }else{
-      if(idCard) await useApiService.editVacant('vacants', idCard, vacant);
+      if(idCard) await useApiService.editVacant('vacancy', idCard, vacant);
     }
     
     functionProp();

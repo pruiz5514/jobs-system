@@ -21,12 +21,13 @@ export const generateMetadata = async ({searchParams}:IProps) => {
 }
 
 export default async function Home({searchParams}:IProps) {
-  const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const page = searchParams.page ? parseInt(searchParams.page) : 0;
   const size = searchParams.size ? parseInt(searchParams.size) : 6;
+  const name = searchParams.name ? String(searchParams.name) : '';
 
-  const data = await useApiService.findAll(`vacants?page=${page}&size=${size}`);
-  const companies = await useApiService.findAllCompanies(`company/all`);
-  
+  const data = await useApiService.findAll(`vacancy?page=${page}&size=${size}&name=${name}`);
+  const companies = await useApiService.findAllCompanies(`company`);
+
   return (
     
     <>
@@ -35,7 +36,7 @@ export default async function Home({searchParams}:IProps) {
         subtitle='Vacantes'
         page='Vacante'
         data = {data}
-        companies = {companies}
+        companies = {companies.content}
       />
     </>
     

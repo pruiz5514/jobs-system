@@ -25,6 +25,7 @@ export interface Vacant {
     title:       string;
     description: string;
     status:      string;
+    company_id:  number;
 }
 
 export interface Pageable {

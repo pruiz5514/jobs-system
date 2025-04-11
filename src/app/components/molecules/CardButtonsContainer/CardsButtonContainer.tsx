@@ -28,7 +28,7 @@ const CardsButtonContainer:React.FC<CardsButtonContainerProps> = ({page, idCard,
 
   const handleDelete = async()=> {
     if(page === 'Vacante'){
-      await useApiService.destroy(`vacants`,idCard);
+      await useApiService.destroy(`vacancy`,idCard);
     }else{
       await useApiService.destroy(`company`,idCard);
     }

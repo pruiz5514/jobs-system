@@ -20,14 +20,12 @@ export const generateMetadata = async ({searchParams}:IProps) =>{
 }
 
 
-
 export default async function Companias({searchParams}:IProps) {
-  const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const page = searchParams.page ? parseInt(searchParams.page) : 0;
   const size = searchParams.size ? parseInt(searchParams.size) : 6;
   const name = searchParams.name ? String(searchParams.name) : '';
-  console.log(name)
 
-  const data = await useApiService.findAll(`company?page=${page}&size=${size}&name=${name}`);
+  const  data = await useApiService.findAll(`company?page=${page}&size=${size}&name=${name}`);
 
     return (
       <PageTemplate

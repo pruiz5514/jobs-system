@@ -1,4 +1,4 @@
-const defaultBaseUrl = "https://vacantsbackendgates-production.up.railway.app/api/v1";
+const defaultBaseUrl = process.env.NEXT_PUBLIC_BACK_HOST || '';
 
 export class HttpClient {
     private baseUrl: string
@@ -14,9 +14,10 @@ export class HttpClient {
     }
 
     private async handleResponse(response: Response){
-        if(!response.ok){
-            throw new Error ('Ocurrio un error en la peticion')
-        }
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw errorData;
+          }
 
         return await response.json();
     }
